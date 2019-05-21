@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit customer</title>
+</head>
+<body>
+<h1>Edit customer</h1>
+<p>
+    <a href="/employee">Customer list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-customer}" th:object="${employee}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+        <tr>
+            <td> name:</td>
+            <td th:text="${employee.name}"></td>
+        </tr>
+        <tr>
+            <td>code:</td>
+            <td th:text="${employee.manv}"></td>
+        </tr>
+        <tr>
+            <td> sex:</td>
+            <td th:text="${employee.sex}"></td>
+        </tr>
+        <tr>
+            <td> phone:</td>
+            <td th:text="${employee.phone}"></td>
+        </tr>
+        <tr>
+            <td> email:</td>
+            <td th:text="${employee.email}"></td>
+        </tr>
+        <tr>
+        <tr>
+            <td>Province:</td>
+            <td>
+                <select name="code">
+                    <option th:each="p : ${teams}"
+                            th:value="${p.id}"
+                            th:text="${p.name}"
+                            th:selected="(${p.id} == *{team.id})"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update customer"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

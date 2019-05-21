@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>group</title>
+</head>
+<body>
+<a href="/create-team">Create new group</a>
+<h1>Provinces</h1>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="team : ${team}">
+        <tr>
+            <td><a th:href="@{/view-province/__${team.id}__}" th:text="${team.name}"></a></td>
+            <td><a th:href="@{/edit-province/__${team.id}__ }">Edit</a></td>
+            <td><a th:href="@{/delete-province/__${team.id}__ }">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>
